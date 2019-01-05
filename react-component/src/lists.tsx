@@ -5,11 +5,17 @@ export class Lists extends React.Component {
   constructor() {
     super();
     this.state = {
-      a: "string"
+      a: "string",
     };
   }
 
+  _onClick() {
+    this.setState({
+      a: this.state.a + '+'
+    });
+  }
+
   render() {
-    return <div>aaa</div>;
+    return <div onClick={this._onClick.bind(this)}>{this.state.a}</div>;
   }
 }
