@@ -1,0 +1,14 @@
+name: test
+on:
+  push:
+    branches:
+      - "**"
+  pull_request: {}
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo echo echo
+        run: |
+          echo echo echo
