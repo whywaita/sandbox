@@ -6,9 +6,15 @@ on:
   pull_request: {}
 
 jobs:
-  sandbox:
+  echo1:
     runs-on: self-hosted
     steps:
       - name: echo echo echo
         run: |
-          echo echo echo
+          echo 1
+  echo2:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 2
