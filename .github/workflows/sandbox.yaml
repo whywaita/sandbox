@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - "**"
-  pull_request: {}
 
 jobs:
   echo1:
@@ -18,3 +17,9 @@ jobs:
       - name: echo echo echo
         run: |
           echo 2
+  echo3:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 3
