@@ -11,15 +11,15 @@ jobs:
       - name: echo echo echo
         run: |
           echo 1
-#  echo2:
-#    runs-on: self-hosted
-#    steps:
-#      - name: echo echo echo
-#        run: |
-#          echo 2
-#  echo3:
-#    runs-on: self-hosted
-#    steps:
-#      - name: echo echo echo
-#        run: |
-#          echo 3
+  echo2:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 2
+  echo3:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 3
