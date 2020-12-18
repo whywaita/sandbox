@@ -17,3 +17,51 @@ jobs:
       - name: echo echo echo
         run: |
           echo 2
+  echo3:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 3
+  echo4:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 4
+  echo5:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 5
+  echo6:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 2
+  echo7:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 1
+  echo8:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 2
+  echo9:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 1
+  echo10:
+    runs-on: self-hosted
+    steps:
+      - name: echo echo echo
+        run: |
+          echo 2
