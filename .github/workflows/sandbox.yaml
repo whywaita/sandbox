@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: echo echo echo
         run: |
-          echo 1
+          env
   echo2:
     runs-on: ubuntu-latest
     steps:
