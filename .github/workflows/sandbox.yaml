@@ -12,6 +12,7 @@ jobs:
         run: |
           echo 1
   echo2:
+    runs-on: ubuntu-latest
     steps:
       - name: echo echo echo
         run: |
