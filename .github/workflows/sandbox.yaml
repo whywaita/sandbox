@@ -11,9 +11,3 @@ jobs:
       - name: echo echo echo
         run: |
           env
-  echo2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo echo echo
-        run: |
-          env
