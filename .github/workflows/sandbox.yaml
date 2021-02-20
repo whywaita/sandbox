@@ -6,8 +6,8 @@ on:
 
 jobs:
   echo1:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: echo echo echo
-        run: |
-          env
+      - uses: bonddim/action-lxd@v1
+      - uses: actions/checkout@v2
+      - uses: mxschmitt/action-tmate@v3
