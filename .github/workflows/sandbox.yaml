@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: whywaita/setup-lxd@0d3b321443c5d287a00bc14097c293fa212b3ab5
         with:
-          lxd_versin: stable/2.0
+          lxd_version: stable/2.0
       - uses: actions/checkout@v2
       - run: |
           lxc launch ubuntu:focal instance
