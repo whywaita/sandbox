@@ -16,3 +16,4 @@ jobs:
           lxc exec instance -- dig github.com
           lxc exec instance -- ping -c5 google.com
       - uses: mxschmitt/action-tmate@v3
+        if: ${ always() }
