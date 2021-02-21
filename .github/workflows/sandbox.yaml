@@ -10,4 +10,8 @@ jobs:
     steps:
       - uses: whywaita/setup-lxd@9275fba9ea95059b16cfbcb6504bbed5a25c080b
       - uses: actions/checkout@v2
+      - run: |
+          lxc launch ubuntu:focal instance
+          sleep 30
+          lxc exec instance -- dig github.com
       - uses: mxschmitt/action-tmate@v3
