@@ -8,6 +8,6 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
-      - uses: bonddim/action-lxd@v1
+      - uses: whywaita/setup-lxd@9275fba9ea95059b16cfbcb6504bbed5a25c080b
       - uses: actions/checkout@v2
       - uses: mxschmitt/action-tmate@v3
