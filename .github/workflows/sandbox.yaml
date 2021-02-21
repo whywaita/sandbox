@@ -8,10 +8,11 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
-      - uses: whywaita/setup-lxd@9275fba9ea95059b16cfbcb6504bbed5a25c080b
+      - uses: whywaita/setup-lxd@0d3b321443c5d287a00bc14097c293fa212b3ab5
       - uses: actions/checkout@v2
       - run: |
           lxc launch ubuntu:focal instance
           sleep 5
           lxc exec instance -- dig github.com
+          lxc exec instance -- ping -c5 google.com
       - uses: mxschmitt/action-tmate@v3
