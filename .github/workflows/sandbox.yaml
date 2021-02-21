@@ -11,8 +11,6 @@ jobs:
       - uses: whywaita/setup-lxd@v1
       - uses: actions/checkout@v2
       - run: |
-          lxc launch ubuntu:focal instance
-          sleep 5
-          lxc exec instance -- dig github.com
+          sudo rm -rf /opt/hostedtoolcache/* /opt/ghc
       - uses: mxschmitt/action-tmate@v3
         if: ${{ always() }}
