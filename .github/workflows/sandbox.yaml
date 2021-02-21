@@ -14,6 +14,5 @@ jobs:
           lxc launch ubuntu:focal instance
           sleep 5
           lxc exec instance -- dig github.com
-          lxc exec instance -- ping -c5 google.com
       - uses: mxschmitt/action-tmate@v3
         if: ${{ always() }}
