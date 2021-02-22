@@ -7,10 +7,23 @@ on:
 jobs:
   echo1:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fase: false
+      matrix:
+        size:
+          - 1
+          - 3
+          - 5
+          - 5.5
+          - 6
+          - 10
+          - 16
+          - 20
     steps:
       - uses: whywaita/setup-lxd@v1
       - uses: actions/checkout@v2
       - run: |
           sudo rm -rf /opt/hostedtoolcache/* /opt/ghc
-      - uses: mxschmitt/action-tmate@v3
-        if: ${{ always() }}
+      - run: |
+          mkdir _output
+          dd if=/dev/zero of=./_output/artifact bs=1G count=${{ matrix.size }}
