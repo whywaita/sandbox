@@ -8,7 +8,7 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     strategy:
-      fail-fase: false
+      fail-fast: false
       matrix:
         size:
           - 1
