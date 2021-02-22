@@ -28,5 +28,5 @@ jobs:
           dd if=/dev/zero of=./_output/artifact bs=1G count=${{ matrix.size }}
       - uses: actions/upload-artifact@v2
         with:
-          name: file-${ { matrix.size }}G
+          name: file-${{ matrix.size }}G
           path: _output
