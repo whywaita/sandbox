@@ -25,25 +25,33 @@ jobs:
 
 
       - name: Clone actions/virtual-environments
+        id: clone
         run: |
           git clone https://github.com/actions/virtual-environments
+
+          cd virtual-environments
+          export DIR=$(pwd)
+          echo "::set-output name=dir::${DIR}"
       - name: Apply LXD patch
         run: |
-          cd virtual-environments
           cp ../lxd.patch .
           patch -p1 < lxd.patch
+        working-directory: ${{ steps.clone.outputs.dir }}
       - name: packer validate packer.json
         run: |
           /tmp/packer validate -syntax-only images/linux/ubuntu2004.json
+        working-directory: ${{ steps.clone.outputs.dir }}
       - name: packer build packer.json
         run: |
           /tmp/packer build -color=false -on-error=abort images/linux/ubuntu2004.json
         env:
           PACKER_LOG: 1
+        working-directory: ${{ steps.clone.outputs.dir }}
       - name: Export image
         run: |
           mkdir -p _output
           lxc image export packer-lxd ./_output
+        working-directory: ${{ steps.clone.outputs.dir }}
 
 
       - name: Notify status
