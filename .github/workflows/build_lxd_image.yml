@@ -30,6 +30,7 @@ jobs:
       - name: Apply LXD patch
         run: |
           cd virtual-environments
+          cp ../lxd.patch .
           patch -p1 < lxd.patch
       - name: packer validate packer.json
         run: |
