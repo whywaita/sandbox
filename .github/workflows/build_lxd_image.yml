@@ -1,0 +1,56 @@
+name: build LXD image
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: whywaita/setup-lxd@v1
+      - name: setup-packer
+        run: |
+          sudo apt-get install -y wget unzip
+          sudo curl -L -O https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip
+          sudo unzip packer_1.7.0_linux_amd64.zip
+          sudo mv ./packer /tmp/packer
+      - uses: actions/checkout@v2
+      - name: Delete unused file
+        run: |
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/*
+          sudo rm -rf /var/lib/docker/*
+          # ignore /usr/share/dpkg
+          ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
+
+
+      - name: Clone actions/virtual-environments
+        run: |
+          git clone https://github.com/actions/virtual-environments
+      - name: Apply LXD patch
+        run: |
+          cd virtual-environments
+          patch -p1 < lxd.patch
+      - name: packer validate packer.json
+        run: |
+          /tmp/packer validate -syntax-only images/linux/ubuntu2004.json
+      - name: packer build packer.json
+        run: |
+          /tmp/packer build -color=false -on-error=abort images/linux/ubuntu2004.json
+        env:
+          PACKER_LOG: 1
+      - name: Export image
+        run: |
+          mkdir -p _output
+          lxc image export packer-lxd ./_output
+
+
+      - name: Notify status
+        uses: lazy-actions/slatify@master
+        if: always()
+        with:
+          job_name: '*build virtual-environments for LXD*'
+          type: ${{ job.status }}
+          icon_emoji: ":octocat:"
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          token: ${{ secrets.GITHUB_TOKEN }}
