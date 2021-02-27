@@ -10,5 +10,6 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          echo 000
+      - uses: whywaita/setup-lxd@v1
+      - uses: mxschmitt/action-tmate@v3
+        if: always()
