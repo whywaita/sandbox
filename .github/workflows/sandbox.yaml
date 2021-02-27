@@ -7,7 +7,7 @@ on:
 
 jobs:
   echo1:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: whywaita/setup-lxd@v1
