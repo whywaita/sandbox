@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: whywaita/setup-lxd@v1
-      - uses: mxschmitt/action-tmate@v3
-        if: always()
+      - run: |
+          mkdir -p _output data
+          echo "aaa" > data/text
+          tar -zcvf _output/archive.tar.gz data
+      - uses: actions/upload-artifact@v2
+        with:
+          name: text
+          path: _output/archive.tar.gz
