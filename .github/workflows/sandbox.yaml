@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          mkdir -p _output data
-          echo "aaa" > data/text
-          tar -zcvf _output/archive.tar.gz data
-      - uses: actions/upload-artifact@v2
-        with:
-          name: text
-          path: _output/archive.tar.gz
+      - name: Delete unused file
+        run: |
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/*
+          sudo rm -rf /var/lib/docker/*
+          # ignore /usr/share/dpkg
+          ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
+      - uses: mxschmitt/action-tmate@v3
