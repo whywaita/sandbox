@@ -16,4 +16,4 @@ jobs:
           type: ${{ job.status }}
           url: ${{ secrets.SLACK_WEBHOOK_URL }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          more_fields: {"aaa": "bbb"}
+          more_fields: '{"aaa": "bbb"}'
