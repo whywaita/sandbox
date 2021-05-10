@@ -11,3 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: whywaita/slatify@add-any-fields
+        with:
+          job_name: 'test'
+          type: ${{ job.status }}
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          more_fields: {"aaa": "bbb"}
