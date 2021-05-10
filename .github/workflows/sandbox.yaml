@@ -10,12 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Delete unused file
-        run: |
-          sudo rm -rf /opt/hostedtoolcache
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/*
-          sudo rm -rf /var/lib/docker/*
-          # ignore /usr/share/dpkg
-          # ls /usr/share/ | grep -vE "dpkg" | grep -vE "confmodule|debconf" | xargs -I%% sudo rm -rf /usr/share/%%
-      - uses: mxschmitt/action-tmate@v3
+      - uses: whywaita/slatify@add-any-fields
