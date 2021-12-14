@@ -7,8 +7,8 @@ on:
 
 jobs:
   echo1:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          sleep 100
+    - uses: actions/checkout@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
