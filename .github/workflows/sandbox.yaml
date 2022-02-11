@@ -1,0 +1,23 @@
+name: test
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+  echo1:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        echo ~/cache/hogehoge
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/cache
+        key: ${{ runner.os }}-${{ hashFiles('~/cache/**') }}
+    - run: |
+        set -x
+
+        env
