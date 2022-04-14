@@ -11,15 +11,15 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - uses: whywaita/setup-lxd@v1
-      - uses: actions/checkout@v2
-      - name: Delete unused file
-        run: |
-          sudo rm -rf /opt/hostedtoolcache
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/*
-          # ignore /var/run, snap lxd packages, apt
-          sudo ls /var/**/** | grep ":" | tr -d ":" | grep -Ev "/var/run|/var/snap/lxd|/var/lib/snapd|/var/lib/dpkg" |  xargs -I%% sudo rm -rf %%
-          # ignore /usr/share/dpkg
-          ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
+     - uses: actions/checkout@v2
+     - name: Delete unused file
+       run: |
+         sudo rm -rf /opt/hostedtoolcache
+         sudo rm -rf /opt/ghc
+         sudo rm -rf /usr/local/*
+         # ignore /var/run, snap lxd packages, apt
+         sudo ls /var/**/** | grep ":" | tr -d ":" | grep -Ev "/var/run|/var/snap/lxd|/var/lib/snapd|/var/lib/dpkg" |  xargs -I%% sudo rm -rf %%
+         # ignore /usr/share/dpkg
+         ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
