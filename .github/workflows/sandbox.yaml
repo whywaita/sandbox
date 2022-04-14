@@ -7,17 +7,8 @@ on:
 
 jobs:
   echo1:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: |
-        echo ~/cache/hogehoge
-    - uses: actions/cache@v2
-      with:
-        path: |
-          ~/cache
-        key: ${{ runner.os }}-${{ hashFiles('~/cache/**') }}
-    - run: |
-        set -x
-
-        env
+     - uses: actions/checkout@v2
+     - name: Run tmate
+       uses: mxschmitt/action-tmate@v3
