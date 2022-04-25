@@ -40,3 +40,4 @@ jobs:
          patch -p1 < virtual-environments-lxd/lxd.patch
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
+       if: always()
