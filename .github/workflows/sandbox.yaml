@@ -37,6 +37,7 @@ jobs:
          git clone https://github.com/whywaita/virtual-environments-lxd
      - name: Apply LXD patch
        run: |
+         cd virtual-environments
          patch -p1 < virtual-environments-lxd/lxd.patch
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
