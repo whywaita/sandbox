@@ -11,7 +11,12 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - uses: whywaita/setup-lxd@v1
-     - uses: actions/checkout@v2
+      - name: setup-packer
+        run: |
+          sudo apt-get install -y wget unzip
+          sudo curl -L -O https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip
+          sudo unzip packer_1.7.0_linux_amd64.zip
+          sudo mv ./packer /tmp/packer
      - name: Delete unused file
        run: |
          sudo rm -rf /opt/hostedtoolcache
@@ -21,5 +26,17 @@ jobs:
          sudo ls /var/**/** | grep ":" | tr -d ":" | grep -Ev "/var/run|/var/snap/lxd|/var/lib/snapd|/var/lib/dpkg" |  xargs -I%% sudo rm -rf %%
          # ignore /usr/share/dpkg
          ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
+      - name: Clone actions/virtual-environments
+        id: clone
+        run: |
+          git clone https://github.com/actions/virtual-environments
+          cd virtual-environments
+          echo "::set-output name=dir::$(pwd)"
+          echo "::set-output name=virtual-environments-hash::$(git rev-parse --short HEAD)"
+          echo "::set-output name=build-date::$(date '+%Y%m%d')"
+          git clone https://github.com/whywaita/virtual-environments-lxd
+      - name: Apply LXD patch
+        run: |
+          patch -p1 < virtual-environments-lxd/lxd.patch
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
