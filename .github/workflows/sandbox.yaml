@@ -28,6 +28,13 @@ jobs:
          sudo ls /var/**/** | grep ":" | tr -d ":" | grep -Ev "/var/run|/var/snap/lxd|/var/lib/snapd|/var/lib/dpkg" |  xargs -I%% sudo rm -rf %%
          # ignore /usr/share/dpkg
          ls /usr/share/ | grep -v dpkg | xargs -I%% sudo rm -rf /usr/share/%%
+     - uses: easimon/maximize-build-space@master
+       with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-haskell: 'true'
+          emove-android: 'true'
      - name: Clone actions/virtual-environments
        id: clone
        run: |
