@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v2
-     - uses: whywaita/setup-lxd@v1
      - name: setup-packer
        run: |
          sudo apt-get install -y wget unzip
@@ -34,7 +33,9 @@ jobs:
           swap-size-mb: 1024
           remove-dotnet: 'true'
           remove-haskell: 'true'
-          emove-android: 'true'
+          remove-android: 'true'
+          build-mount-path: '/var/snap'
+     - uses: whywaita/setup-lxd@v1
      - name: Clone actions/virtual-environments
        id: clone
        run: |
