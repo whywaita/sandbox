@@ -17,7 +17,7 @@ jobs:
         cat <<EOF | lxd init --preseed
         storage_pools:
         - name: default
-          driver: btrfs
+          driver: dir
         networks:
         - name: lxdbr0
           type: bridge
@@ -59,10 +59,9 @@ jobs:
          echo "::set-output name=dir::$(pwd)"
          echo "::set-output name=virtual-environments-hash::$(git rev-parse --short HEAD)"
          echo "::set-output name=build-date::$(date '+%Y%m%d')"
-         git clone https://github.com/whywaita/virtual-environments-lxd
      - name: Apply LXD patch
        run: |
-         patch -p1 < virtual-environments-lxd/lxd.patch
+         patch -p1 < ../lxd.patch
        working-directory: ${{ steps.clone.outputs.dir }}
      - name: packer build packer.json
        run: |
