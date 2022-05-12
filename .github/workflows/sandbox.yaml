@@ -79,7 +79,7 @@ jobs:
          set -x
 
          sudo df -h
-         sudo du -scm /*
+         sudo du -scm --exclude=/proc/* /*
      - name: packer build packer.json
        run: |
          /tmp/packer build -color=false -on-error=abort images/linux/ubuntu2004.json
