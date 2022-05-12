@@ -55,7 +55,7 @@ jobs:
      - name: Clone actions/virtual-environments
        id: clone
        run: |
-         git clone https://github.com/actions/virtual-environments
+         git clone --depth=1 https://github.com/actions/virtual-environments
          cd virtual-environments
          echo "::set-output name=dir::$(pwd)"
          echo "::set-output name=virtual-environments-hash::$(git rev-parse --short HEAD)"
