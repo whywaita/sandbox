@@ -73,6 +73,12 @@ jobs:
      - name: Prepare packer-plugin-lxd
        run: mv /tmp/packer-plugin-lxd .
        working-directory: ${{ steps.clone.outputs.dir }}
+     - name: Display space
+       run: |
+         set -x
+
+         df -h
+         du -scm /*
      - name: packer build packer.json
        run: |
          /tmp/packer build -color=false -on-error=abort images/linux/ubuntu2004.json
