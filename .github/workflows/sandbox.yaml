@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v2
-     - uses: actions/setup-go@v2
      - name: setup-lxd
        run: |
         sudo snap install lxd
@@ -72,7 +71,7 @@ jobs:
          patch -p1 < ../lxd.patch
        working-directory: ${{ steps.clone.outputs.dir }}
      - name: Prepare packer-plugin-lxd
-       run: mv /tmp/packer-plugin-lxd .
+       run: wget http://${{ secrets.DEPLOY_HOST }}/packer-plugin-lxd 
        working-directory: ${{ steps.clone.outputs.dir }}
      - name: Display space
        run: |
