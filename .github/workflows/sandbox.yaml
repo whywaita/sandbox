@@ -52,6 +52,7 @@ jobs:
          sudo rm -rf /opt/
          sudo rm -rf /usr/local/*
          sudo rm -rf /usr/local/.ghcup
+         sudo rm -rf /usr/lib/jvm
          sudo rm -rf /home/runneradmin /home/linuxbrew
          #sudo rm -rf /home/runner/.*
          # ignore /var/run, snap lxd packages, apt
