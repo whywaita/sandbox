@@ -45,7 +45,7 @@ jobs:
          sudo rm -rf /opt/
          sudo rm -rf /usr/local/*
          sudo rm -rf /usr/local/.ghcup
-         sudo rm -rf /usr/lib/jvm /usr/lib/google-cloud-sdk
+         sudo rm -rf /usr/lib/jvm /usr/lib/google-cloud-sdk /usr/lib/x86_64-linux-gnu
          sudo rm -rf /home/runneradmin /home/linuxbrew
          sudo rm -rf /home/runner/runners/*
          #sudo rm -rf /home/runner/.*
