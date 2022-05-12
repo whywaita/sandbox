@@ -40,12 +40,6 @@ jobs:
          sudo unzip packer_1.7.0_linux_amd64.zip
          sudo mv ./packer /tmp/packer
          sudo rm -f ./packer_1.7.0_linux_amd64.zip
-     - name: Build packer-plugin-lxd
-       run: |
-         git clone https://github.com/hashicorp/packer-plugin-lxd
-         cd packer-plugin-lxd
-         go build .
-         mv packer-plugin-lxd /tmp/
      - name: Delete unused file
        run: |
          sudo rm -rf /opt/
@@ -71,7 +65,9 @@ jobs:
          patch -p1 < ../lxd.patch
        working-directory: ${{ steps.clone.outputs.dir }}
      - name: Prepare packer-plugin-lxd
-       run: wget http://${{ secrets.DEPLOY_HOST }}/packer-plugin-lxd 
+       run: |
+         wget http://${{ secrets.DEPLOY_HOST }}/packer-plugin-lxd
+         chmod +x ./packer-plugin-lxd
        working-directory: ${{ steps.clone.outputs.dir }}
      - name: Display space
        run: |
