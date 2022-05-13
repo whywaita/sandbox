@@ -86,11 +86,13 @@ jobs:
        run: lxc stop packer-lxd
      - name: Deploy
        run: |
+         mkdir -p ~/.ssh
+         chmod 700 ~/.ssh
          echo ${DEPLOY_KEY} > ~/.ssh/id_rsa_deploy
          chmod 600 ~/.ssh/id_rsa_deploy
          echo ${KNOWN_HOSTS} >> ~/.ssh/known_hosts
 
-         scp -r -i ~/.ssh/id_rsa_deploy "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" ${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}:www
+         sudo scp -r -i ~/.ssh/id_rsa_deploy "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" ${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}:www
        env:
          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
          KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
