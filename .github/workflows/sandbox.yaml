@@ -83,7 +83,7 @@ jobs:
        env:
          PACKER_LOG: 1
      - name: Stop container
-       run: /tmp/packer stop packer-lxd
+       run: lxc stop packer-lxd
        working-directory: ${{ steps.clone.outputs.dir }}
      - uses: appleboy/scp-action@master
        with:
