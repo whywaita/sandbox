@@ -7,16 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v2
-     - name: Deploy
-       run: |
-         mkdir -p ~/.ssh
-         chmod 700 ~/.ssh
-         echo "${DEPLOY_KEY}" > ~/.ssh/id_rsa_deploy
-         chmod 600 ~/.ssh/id_rsa_deploy
-         echo "${KNOWN_HOSTS}" >> ~/.ssh/known_hosts
-       env:
-         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-         KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
