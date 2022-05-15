@@ -96,7 +96,7 @@ jobs:
 
          sudo mkdir -p /mnt/cache
          sudo mkdir -p /mnt/output
-         sudo ./distrobuilder pack-lxd db.yaml "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" /mnt /mnt/output --cache-dir /mnt/cache
+         sudo ./distrobuilder pack-lxd db.yaml "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" /mnt/output --cache-dir /mnt/cache
          #     - name: Deploy
          #       run: |
          #         mkdir -p ~/.ssh
