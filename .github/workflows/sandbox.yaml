@@ -94,9 +94,9 @@ jobs:
          wget http://${{ secrets.DEPLOY_HOST }}/db.yaml
          chmod +x ./distrobuilder
 
-         mkdir -p /mnt/cache
-         mkdir -p /mnt/output
-         ./distrobuilder pack-lxd db.yaml "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" /mnt /mnt/output --cache-dir /mnt/cache
+         sudo mkdir -p /mnt/cache
+         sudo mkdir -p /mnt/output
+         sudo ./distrobuilder pack-lxd db.yaml "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" /mnt /mnt/output --cache-dir /mnt/cache
          #     - name: Deploy
          #       run: |
          #         mkdir -p ~/.ssh
