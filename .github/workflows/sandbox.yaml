@@ -97,6 +97,15 @@ jobs:
          sudo mkdir -p /mnt/cache
          sudo mkdir -p /mnt/output
          sudo ./distrobuilder pack-lxd db.yaml "/var/snap/lxd/common/lxd/storage-pools/default/containers/packer-lxd" /mnt/output --cache-dir /mnt/cache
+         
+         set -x
+         ls -l /mnt/output
+     - name: Display space
+       run: |
+         set -x
+
+         sudo df -h
+         sudo du -scm --exclude=/proc/* /*
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
