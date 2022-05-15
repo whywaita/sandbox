@@ -106,6 +106,12 @@ jobs:
 
          sudo df -h
          sudo du -scm --exclude=/proc/* /*
+     - name: Upload artifact
+       uses: actions/upload-artifact@v2
+       with:
+         name: virtual-environments-lxd-${{ steps.clone.outputs.virtual-environments-hash }}-${{ steps.clone.outputs.build-date }}
+         path: /mnt/output/*
+         retention-days: 5
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
