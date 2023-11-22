@@ -7,7 +7,7 @@ on:
 
 jobs:
   echo1:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v4
      - uses: hashicorp/setup-packer@v2.0.0
