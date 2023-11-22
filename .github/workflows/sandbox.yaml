@@ -13,6 +13,7 @@ jobs:
      - run: |
          cat /proc/cpuinfo | grep kvm
      - uses: hashicorp/setup-packer@v2.0.0
+     - run: packer --help
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
