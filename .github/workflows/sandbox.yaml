@@ -9,7 +9,10 @@ jobs:
   echo1:
     runs-on: macos-latest
     steps:
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v4
+     - run: |
+         cat /proc/cpuinfo | grep kvm
+     - uses: hashicorp/setup-packer@v2.0.0
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
