@@ -14,7 +14,7 @@ jobs:
      #     - run: ls -la /opt/hostedtoolcache
      - run: echo ${USER} ; id
      - run: ls -la ${HOME}/.local
-     - uses: whywaita/is-installed-xcode-action@a2a134e5d4479d1453b172a111aca4262bf5af8f
+     - uses: whywaita/is-installed-xcode-action@98a80e63d1d95fb3cb5fab03424dd16d867b4f54
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
