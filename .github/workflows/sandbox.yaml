@@ -11,7 +11,7 @@ jobs:
     steps:
      - uses: actions/checkout@v4
      - run: ls -la
-     - run: ls -la /opt/hostedtoolcache
+     #     - run: ls -la /opt/hostedtoolcache
      - run: echo ${USER} ; id
      - run: ls -la ${HOME}/.local
      - run: whywaita@is-installed-xcode-action@develop
