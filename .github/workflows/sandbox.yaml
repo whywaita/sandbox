@@ -7,13 +7,14 @@ on:
 
 jobs:
   echo1:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
      - uses: actions/checkout@v4
      - run: ls -la
      - run: ls -la /opt/hostedtoolcache
      - run: echo ${USER} ; id
      - run: ls -la ${HOME}/.local
+     - run: whywaita@is-installed-xcode-action@develop
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
