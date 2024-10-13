@@ -11,10 +11,8 @@ jobs:
     steps:
      - uses: actions/checkout@v4
      - run: ls -la
-     #     - run: ls -la /opt/hostedtoolcache
      - run: echo ${USER} ; id
      - run: ls -la ${HOME}/.local
-     - uses: whywaita/is-installed-xcode-action@fix/getdetails
      - name: Run tmate
        uses: mxschmitt/action-tmate@v3
        if: always()
