@@ -1,9 +1,9 @@
-name: tmate
+name: tmate (focal)
 on:
   workflow_dispatch:
 
 jobs:
-  echo1:
+  tmate-focal:
     runs-on: ubuntu-20.04
     steps:
      - uses: actions/checkout@v3
