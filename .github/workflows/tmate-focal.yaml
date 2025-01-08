@@ -1,0 +1,13 @@
+name: tmate (focal)
+on:
+  workflow_dispatch:
+
+jobs:
+  tmate-focal:
+    runs-on: ubuntu-20.04
+    steps:
+     - uses: actions/checkout@v3
+     - uses: hashicorp/setup-packer@main
+     - name: Run tmate
+       uses: mxschmitt/action-tmate@v3
+       if: always()
