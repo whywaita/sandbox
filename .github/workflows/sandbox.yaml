@@ -13,7 +13,6 @@ jobs:
      - run: ls -la
      - run: ls -la /opt/hostedtoolcache
      - run: echo ${USER} ; id
-     - run: ls -la ${HOME}/.local
      - run: echo ${{ format('./runner-images/images/ubuntu/Ubuntu{0}-Readme.md', 20.04) }}
      - run: echo ${{ format('./runner-images/images/ubuntu/Ubuntu{0}-Readme.md', '20.04') }}
      - name: Run tmate
