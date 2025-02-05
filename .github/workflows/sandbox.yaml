@@ -15,7 +15,7 @@ jobs:
      - run: echo ${USER} ; id
      - uses: actions/upload-artifact@v4
        with:
-         path: format('/opt/hostedtoolcache/{0}', 'PyPy')
+         path: ${{ format('/opt/hostedtoolcache/{0}', 'PyPy') }}
      - uses: actions/upload-artifact@v4
        with:
          path: format('/opt/hostedtoolcache/{0}', PyPy)
