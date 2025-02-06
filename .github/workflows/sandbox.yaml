@@ -7,7 +7,7 @@ on:
     inputs:
       text:
         type: string
-        required: p
+        required: true
 
 jobs:
   echo1:
@@ -19,7 +19,7 @@ jobs:
      - run: echo ${USER} ; id
      - uses: actions/upload-artifact@v4
        with:
-         path: ${{ format('/opt/hostedtoolcache/{0}', ${{ inputs.p }}) }}
+         path: ${{ format('/opt/hostedtoolcache/{0}', ${{ inputs.text }}) }}
      - uses: actions/upload-artifact@v4
        with:
          path: format('/opt/hostedtoolcache/{0}', PyPy)
