@@ -4,6 +4,10 @@ on:
     branches:
       - "**"
   workflow_dispatch:
+    inputs:
+      text:
+        type: string
+        required: p
 
 jobs:
   echo1:
@@ -15,7 +19,7 @@ jobs:
      - run: echo ${USER} ; id
      - uses: actions/upload-artifact@v4
        with:
-         path: ${{ format('/opt/hostedtoolcache/{0}', 'PyPy') }}
+         path: ${{ format('/opt/hostedtoolcache/{0}', ${{ inputs.p }}) }}
      - uses: actions/upload-artifact@v4
        with:
          path: format('/opt/hostedtoolcache/{0}', PyPy)
